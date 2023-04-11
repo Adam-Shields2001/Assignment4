@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Header -->
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="B.Sc. in Business Computing"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <!-- Subheader -->
+    <TextView
+        android:id="@+id/subheader_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header_text"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Year 4 - Software Design Patterns - Continuous Assessment - Assessment 4"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <!-- Menu items -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subheader_text"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/view_stock_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Stock Items" />
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Items" />
+
+        <Button
+            android:id="@+id/shopping_cart_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Shopping Cart" />
+
+        <Button
+            android:id="@+id/account_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Account" />
+
+    </LinearLayout>
+
+</RelativeLayout>
