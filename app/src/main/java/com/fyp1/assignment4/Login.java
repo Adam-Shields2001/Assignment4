@@ -1,5 +1,7 @@
 package com.fyp1.assignment4;
 
+import static com.android.volley.VolleyLog.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fyp1.assignment4.POJOS.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,6 +24,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -108,47 +117,42 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    String uid = user.getUid();
 
-                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                    Map<String, Object> data = new HashMap<>();
-                    data.put("uid", uid);
+                    if (user.isEmailVerified()) {
+                        String uid = user.getUid();
 
-                    firestore.collection("Users")
-                            .document(uid)
-                            .set(data)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d("TAG", "User data added successfully");
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+                        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    boolean isAdmin = snapshot.child("admin").getValue(Boolean.class);
+                                    if (isAdmin) {
+                                        startActivity(new Intent(Login.this, AdminMenu.class));
+                                    } else {
+                                        startActivity(new Intent(Login.this, Menu.class));
+                                    }
+                                    progressBar.setVisibility(View.GONE);
                                 }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d("TAG", "Error adding user data: " + e.getMessage());
-                                }
-                            });
+                            }
 
-                    if(user.isEmailVerified()) {
-                        startActivity(new Intent(Login.this, Menu.class));
-                        progressBar.setVisibility(View.GONE);
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                // Handle error
+                            }
+                        });
                     } else {
                         user.sendEmailVerification();
                         Toast.makeText(Login.this, "Check email to verify your account!", Toast.LENGTH_LONG).show();
                         progressBar.setVisibility(View.GONE);
                     }
-
                 } else {
                     Toast.makeText(Login.this, "Failed to login! Please check credentials!", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
                 }
             }
         });
-
-
-
     }
 }

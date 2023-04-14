@@ -10,9 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:text="B.Sc. in Business Computing"
+        android:text="Welcome"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:textAlignment="center" />
 
     <!-- Subheader -->

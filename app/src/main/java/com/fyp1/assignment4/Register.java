@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.fyp1.assignment4.POJOS.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -110,6 +111,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
                         if(task.isSuccessful()) {
                             User user = new User(name, age, email, password);
+
+                            // Add isAdmin field to user object
+                            user.setAdmin(false);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
