@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Item Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_alignParentStart="true"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_menu"
+        android:contentDescription="@string/menu_button_description"
+        android:onClick="showMenu"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/item_title"
+        android:layout_alignBottom="@id/item_title"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/item_manufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manufacturer"
+        android:textSize="16sp"
+        android:layout_below="@id/item_title"/>
+
+    <TextView
+        android:id="@+id/item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="16sp"
+        android:layout_below="@id/item_manufacturer"/>
+
+    <TextView
+        android:id="@+id/item_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="16sp"
+        android:paddingBottom="16dp"
+        android:layout_below="@id/item_price"/>
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/twitter"
+        android:layout_below="@id/item_category"/>
+
+</RelativeLayout>
+
+
+

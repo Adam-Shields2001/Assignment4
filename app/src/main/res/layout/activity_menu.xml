@@ -5,7 +5,7 @@
 
     <!-- Header -->
     <TextView
-        android:id="@+id/header_text"
+        android:id="@+id/headerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -21,7 +21,7 @@
         android:id="@+id/subheader_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/header_text"
+        android:layout_below="@id/headerText"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="Year 4 - Software Design Patterns - Continuous Assessment - Assessment 4"
@@ -37,25 +37,25 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/view_stock_button"
+            android:id="@+id/viewStockButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Stock Items" />
 
         <Button
-            android:id="@+id/search_button"
+            android:id="@+id/searchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Search Items" />
 
         <Button
-            android:id="@+id/shopping_cart_button"
+            android:id="@+id/shoppingCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Shopping Cart" />
 
         <Button
-            android:id="@+id/account_button"
+            android:id="@+id/accountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="View Account" />

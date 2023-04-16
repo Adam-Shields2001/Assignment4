@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Assignment4</string>
+    <string name="menu_button_description">Menu</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_delete">Delete</string>
+    <string name="add_item">Add Item</string>
+    <string name="update_item">Update Item</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="view_stock">View Stock</string>
+    <string name="view_purchase_history">View Purchase History</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="search_hint">Search for items</string>
+    <string name="price">Price</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="category">Category</string>
+    <string name="title">Title</string>
 </resources>

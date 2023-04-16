@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/adminTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Admin Menu"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/stockTitleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stock Title"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/stockTitleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/stockManufacturerLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manufacturer"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/stockManufacturerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/stockPriceLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/stockPriceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/stockCategoryLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/stockCategoryEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/stockImageLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image URL"
+        android:padding="8dp" />
+
+    <EditText
+        android:id="@+id/stockImageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="8dp" />
+
+    <Button
+        android:id="@+id/addStockButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Stock"
+        android:padding="8dp" />
+
+    <Button
+        android:id="@+id/updateStockButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Stock"
+        android:padding="8dp" />
+
+</LinearLayout>
