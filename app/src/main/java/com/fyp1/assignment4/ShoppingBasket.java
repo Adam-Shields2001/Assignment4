@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +90,9 @@ public class ShoppingBasket extends AppCompatActivity {
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ShoppingBasket.this, Checkout.class));
+                Intent intent = new Intent(ShoppingBasket.this, Checkout.class);
+                intent.putExtra("stockItemList", (Serializable) stockItemList);
+                startActivity(intent);
             }
         });
     }

@@ -10,6 +10,7 @@ public class StockItem implements Serializable {
     private String category;
     private String stock;
     private String image;
+    private int quantity;
 
     public StockItem() {}
 
@@ -76,6 +77,14 @@ public class StockItem implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
 

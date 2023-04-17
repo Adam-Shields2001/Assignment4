@@ -1,4 +1,4 @@
-package com.fyp1.assignment4;
+package com.fyp1.assignment4.Interfaces;
 
 import java.util.Observable;
 

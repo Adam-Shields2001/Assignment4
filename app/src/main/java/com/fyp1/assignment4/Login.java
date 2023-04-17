@@ -5,6 +5,7 @@ import static com.android.volley.VolleyLog.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,20 +51,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        register = (TextView) findViewById(R.id.register);
+        register = findViewById(R.id.register);
         register.setOnClickListener(this);
 
-        signIn = (Button) findViewById(R.id.btnLogin);
+        signIn = findViewById(R.id.btnLogin);
         signIn.setOnClickListener(this);
 
-        editTextEmail = (EditText) findViewById(R.id.inputEmail);
-        editTextPassword = (EditText) findViewById(R.id.inputPassword);
+        editTextEmail = findViewById(R.id.inputEmail);
+        editTextPassword = findViewById(R.id.inputPassword);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         mAuth = FirebaseAuth.getInstance();
 
-        forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        forgotPassword = findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(this);
     }
 
@@ -70,7 +72,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.register:
-                startActivity(new Intent(this, Register.class));
+                Intent registerIntent = new IntentBuilder(this, Register.class)
+                        .build();
+                startActivity(registerIntent);
                 break;
 
             case R.id.btnLogin:
@@ -78,7 +82,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 break;
 
             case R.id.forgotPassword:
-                startActivity(new Intent(this, ForgotPassword.class));
+                Intent forgotPasswordIntent = new IntentBuilder(this, ForgotPassword.class)
+                        .build();
+                startActivity(forgotPasswordIntent);
                 break;
         }
     }
@@ -130,9 +136,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                                 if (snapshot.exists()) {
                                     boolean isAdmin = snapshot.child("admin").getValue(Boolean.class);
                                     if (isAdmin) {
-                                        startActivity(new Intent(Login.this, AdminMenu.class));
+                                        Intent adminMenuIntent = new IntentBuilder(Login.this, AdminMenu.class)
+                                                .build();
+                                        startActivity(adminMenuIntent);
                                     } else {
-                                        startActivity(new Intent(Login.this, Menu.class));
+                                        Intent menuIntent = new IntentBuilder(Login.this, Menu.class)
+                                                .build();
+                                        startActivity(menuIntent);
                                     }
                                     progressBar.setVisibility(View.GONE);
                                 }
@@ -155,4 +165,34 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             }
         });
     }
+
+    private static class IntentBuilder {
+        private final Context context;
+        private final Class<?> cls;
+        private Bundle extras;
+
+        public IntentBuilder(Context context, Class<?> cls) {
+            this.context = context;
+            this.cls = cls;
+            extras = new Bundle();
+        }
+
+        public IntentBuilder withExtra(String key, Serializable value) {
+            extras.putSerializable(key, value);
+            return this;
+        }
+
+        public IntentBuilder withFlags(int flags) {
+            extras.putInt("flags", flags);
+            return this;
+        }
+
+        public Intent build() {
+            Intent intent = new Intent(context, cls);
+            intent.putExtras(extras);
+            return intent;
+        }
+    }
+
 }
+

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +43,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
             holder.manufacturerTextView.setText("Manufacturer: " + basketItem.getManufacturer());
             holder.priceTextView.setText("Price: €" + String.valueOf(basketItem.getPrice()));
             holder.categoryTextView.setText("Category: " + basketItem.getCategory());
+            holder.stockTextView.setText("Stock: " + String.valueOf(basketItem.getStock()));
             // Set image to ImageView using a library such as Glide or Picasso
         }
     }
@@ -61,7 +65,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
 
     public class BasketViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView titleTextView, manufacturerTextView, priceTextView, categoryTextView;
+        public TextView titleTextView, manufacturerTextView, priceTextView, categoryTextView, stockTextView;
         public ImageView imageView;
 
         public BasketViewHolder(@NonNull View itemView) {
@@ -71,6 +75,7 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.BasketView
             priceTextView = itemView.findViewById(R.id.basket_item_price);
             categoryTextView = itemView.findViewById(R.id.basket_item_category);
             imageView = itemView.findViewById(R.id.basket_item_image);
+            stockTextView = itemView.findViewById(R.id.item_stock);
 
             itemView.setOnClickListener(this);
         }

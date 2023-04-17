@@ -16,23 +16,11 @@
         android:textColor="@color/black"
         android:textAlignment="center" />
 
-    <!-- Subheader -->
-    <TextView
-        android:id="@+id/subheader_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/headerText"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Year 4 - Software Design Patterns - Continuous Assessment - Assessment 4"
-        android:textSize="18sp"
-        android:textAlignment="center" />
-
     <!-- Menu items -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/subheader_text"
+        android:layout_below="@id/headerText"
         android:layout_marginTop="32dp"
         android:orientation="vertical">
 

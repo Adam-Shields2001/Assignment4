@@ -74,6 +74,7 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
                 userBasketRef.child("manufacturer").setValue(selectedItem.getManufacturer());
                 userBasketRef.child("price").setValue(selectedItem.getPrice());
                 userBasketRef.child("category").setValue(selectedItem.getCategory());
+                userBasketRef.child("stock").setValue(selectedItem.getStock());
                 // add the image URL if necessary
 
                 // show a toast to indicate that the item has been added to the basket
