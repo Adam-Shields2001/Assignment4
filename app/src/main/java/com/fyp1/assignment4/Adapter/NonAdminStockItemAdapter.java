@@ -15,17 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fyp1.assignment4.POJOS.StockItem;
 import com.fyp1.assignment4.R;
-import com.fyp1.assignment4.ViewItems;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
-public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStockItemAdapter.StockItemViewHolder> {
+public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStockItemAdapter.StockItemViewHolder> implements Observer{
 
     private List<StockItem> stockItemList;
     private Context context;
+    private Observable observable;
 
     public NonAdminStockItemAdapter(Context context, List<StockItem> stockItemList) {
         this.context = context;
@@ -77,9 +79,6 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
                 Toast.makeText(context, "Item added to basket", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
     }
 
     @Override
@@ -90,6 +89,20 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
     public void setStockItemList(List<StockItem> stockItemList) {
         this.stockItemList = stockItemList;
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void update(Observable observable, Object arg) {
+        // Check if the updated observable is the same as the one we are observing
+        if (observable == this.observable) {
+            // Cast the argument to a List of StockItems and set it in the adapter
+            List<StockItem> stockItemList = (List<StockItem>) arg;
+            setStockItemList(stockItemList);
+        }
+    }
+
+    public void setObservable(Observable observable) {
+        this.observable = observable;
     }
 
     public class StockItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
