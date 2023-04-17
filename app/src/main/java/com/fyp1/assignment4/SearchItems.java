@@ -92,7 +92,9 @@ public class SearchItems extends AppCompatActivity implements Observer {
     private List<StockItem> filterStockItems(List<StockItem> stockItems, String query) {
         List<StockItem> filteredList = new ArrayList<>();
         for (StockItem stockItem : stockItems) {
-            if (stockItem.getTitle().toLowerCase().contains(query.toLowerCase())) {
+            if (stockItem.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                    stockItem.getCategory().toLowerCase().contains(query.toLowerCase()) ||
+                    stockItem.getManufacturer().toLowerCase().contains(query.toLowerCase())) {
                 filteredList.add(stockItem);
             }
         }

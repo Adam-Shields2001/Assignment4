@@ -49,6 +49,7 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
             holder.manufacturerTextView.setText("Manufacturer: " + stockItem.getManufacturer());
             holder.priceTextView.setText("Price: €" + String.valueOf(stockItem.getPrice()));
             holder.categoryTextView.setText("Category: " + stockItem.getCategory());
+            holder.stockTextView.setText("Stock: " + String.valueOf(stockItem.getStock()));
             // Set image to ImageView using a library such as Glide or Picasso
         }
 
@@ -107,7 +108,7 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
 
     public class StockItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView titleTextView, manufacturerTextView, priceTextView, categoryTextView;
+        public TextView titleTextView, manufacturerTextView, priceTextView, categoryTextView, stockTextView;
         public ImageView imageView;
         public Button addToBasketButton;
 
@@ -119,6 +120,7 @@ public class NonAdminStockItemAdapter extends RecyclerView.Adapter<NonAdminStock
             categoryTextView = itemView.findViewById(R.id.item_category);
             imageView = itemView.findViewById(R.id.item_image);
             addToBasketButton = itemView.findViewById(R.id.addToBasketButton);
+            stockTextView = itemView.findViewById(R.id.item_stock_left);
 
             itemView.setOnClickListener(this);
         }

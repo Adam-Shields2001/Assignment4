@@ -37,8 +37,16 @@
         android:layout_height="wrap_content"
         android:text="Category"
         android:textSize="16sp"
-        android:paddingBottom="16dp"
         android:layout_below="@id/item_price"/>
+
+    <TextView
+        android:id="@+id/item_stock_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stock Left"
+        android:textSize="16sp"
+        android:paddingBottom="16dp"
+        android:layout_below="@id/item_category"/>
 
     <ImageView
         android:id="@+id/item_image"
@@ -46,7 +54,7 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/twitter"
-        android:layout_below="@id/item_category"/>
+        android:layout_below="@id/item_stock_left"/>
 
     <Button
         android:id="@+id/addToBasketButton"
@@ -57,3 +65,4 @@
         android:layout_marginTop="16dp"/>
 
 </RelativeLayout>
+

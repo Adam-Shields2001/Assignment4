@@ -8,15 +8,17 @@ public class StockItem implements Serializable {
     private String manufacturer;
     private String price;
     private String category;
+    private String stock;
     private String image;
 
     public StockItem() {}
 
-    public StockItem(String title, String manufacturer, String price, String category, String image) {
+    public StockItem(String title, String manufacturer, String price, String category, String stock, String image) {
         this.title = title;
         this.manufacturer = manufacturer;
         this.price = price;
         this.category = category;
+        this.stock = stock;
         this.image = image;
     }
 
@@ -42,6 +44,14 @@ public class StockItem implements Serializable {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
     }
 
     public String getCategory() {

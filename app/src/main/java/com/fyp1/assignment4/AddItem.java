@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AddItem extends AppCompatActivity {
 
-    private EditText titleEditText, manufacturerEditText, priceEditText, categoryEditText, imageEditText;
+    private EditText titleEditText, manufacturerEditText, priceEditText, categoryEditText, stockEditText, imageEditText;
     private Button addButton, updateButton;
     private StockItem stockItem;
 
@@ -38,11 +38,11 @@ public class AddItem extends AppCompatActivity {
         imageEditText = findViewById(R.id.stockImageEditText);
         addButton = findViewById(R.id.addStockButton);
         updateButton = findViewById(R.id.updateStockButton);
+        stockEditText = findViewById(R.id.stockEditText);
 
         // Get the details of the clicked item from the Intent
         Intent intent = getIntent();
         stockItem = (StockItem) intent.getSerializableExtra("stock_item");
-
 
         // Check if the StockItem object is not null before accessing its properties
         if (stockItem != null) {
@@ -51,7 +51,9 @@ public class AddItem extends AppCompatActivity {
             manufacturerEditText.setText(stockItem.getManufacturer());
             priceEditText.setText(String.valueOf(stockItem.getPrice()));
             categoryEditText.setText(stockItem.getCategory());
+            stockEditText.setText(stockItem.getStock());
             imageEditText.setText(stockItem.getImage());
+
         } else {
             Toast.makeText(this, "Error: Item not found", Toast.LENGTH_SHORT).show();
         }
@@ -65,6 +67,7 @@ public class AddItem extends AppCompatActivity {
                 String manufacturer = manufacturerEditText.getText().toString().trim();
                 String price = (priceEditText.getText().toString().trim());
                 String category = categoryEditText.getText().toString().trim();
+                String stock = stockEditText.getText().toString().trim();
                 String image = imageEditText.getText().toString().trim();
 
                 // Perform validation checks on input fields
@@ -86,6 +89,12 @@ public class AddItem extends AppCompatActivity {
                     return;
                 }
 
+                if (TextUtils.isEmpty(stock)) {
+                    stockEditText.setError("Stock is required");
+                    stockEditText.requestFocus();
+                    return;
+                }
+
                 if (TextUtils.isEmpty(category)) {
                     categoryEditText.setError("Category is required");
                     categoryEditText.requestFocus();
@@ -101,7 +110,7 @@ public class AddItem extends AppCompatActivity {
                 // Save data to Firebase Realtime Database
                 DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Stock");
                 String id = databaseReference.push().getKey();
-                StockItem stockItem = new StockItem(title, manufacturer, price, category, image);
+                StockItem stockItem = new StockItem(title, manufacturer, price, category, stock, image);
                 databaseReference.child(id).setValue(stockItem);
 
                 // Show success message and go back to admin menu
@@ -124,6 +133,7 @@ public class AddItem extends AppCompatActivity {
         String manufacturer = manufacturerEditText.getText().toString().trim();
         String price = (priceEditText.getText().toString().trim());
         String category = categoryEditText.getText().toString().trim();
+        String stock = stockEditText.getText().toString().trim();
         String image = imageEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(title)) {
@@ -141,6 +151,12 @@ public class AddItem extends AppCompatActivity {
         if (TextUtils.isEmpty(price)) {
             priceEditText.setError("Price is required");
             priceEditText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(stock)) {
+            stockEditText.setError("Stock is required");
+            stockEditText.requestFocus();
             return;
         }
 
@@ -190,6 +206,7 @@ public class AddItem extends AppCompatActivity {
                 stockItem.setManufacturer(manufacturer);
                 stockItem.setPrice(price);
                 stockItem.setCategory(category);
+                stockItem.setStock(stock);
                 stockItem.setImage(image);
 
                 // Update the stock item in the database

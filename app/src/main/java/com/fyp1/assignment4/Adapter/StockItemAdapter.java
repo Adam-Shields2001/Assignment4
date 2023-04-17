@@ -54,6 +54,7 @@ public class StockItemAdapter extends RecyclerView.Adapter<StockItemAdapter.Stoc
             holder.manufacturerTextView.setText("Manufacturer: " + stockItem.getManufacturer());
             holder.priceTextView.setText("Price: €" + String.valueOf(stockItem.getPrice()));
             holder.categoryTextView.setText("Category: " + stockItem.getCategory());
+            holder.stockTextView.setText("Stock: " + String.valueOf(stockItem.getStock()));
             // Set image to ImageView using a library such as Glide or Picasso
         }
     }
@@ -70,10 +71,7 @@ public class StockItemAdapter extends RecyclerView.Adapter<StockItemAdapter.Stoc
 
     public class StockItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView titleTextView;
-        public TextView manufacturerTextView;
-        public TextView priceTextView;
-        public TextView categoryTextView;
+        public TextView titleTextView, manufacturerTextView, priceTextView, categoryTextView, stockTextView;
         public ImageView imageView;
         public ImageButton menuButton;
 
@@ -85,6 +83,7 @@ public class StockItemAdapter extends RecyclerView.Adapter<StockItemAdapter.Stoc
             categoryTextView = itemView.findViewById(R.id.item_category);
             imageView = itemView.findViewById(R.id.item_image);
             menuButton = itemView.findViewById(R.id.menu_button);
+            stockTextView = itemView.findViewById(R.id.item_stock);
 
             // set the click listener for the menu button
             menuButton.setOnClickListener(new View.OnClickListener() {

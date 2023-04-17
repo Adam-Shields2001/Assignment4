@@ -49,7 +49,6 @@
         android:layout_height="wrap_content"
         android:text="Category"
         android:textSize="16sp"
-        android:paddingBottom="16dp"
         android:layout_below="@id/item_price"/>
 
     <ImageView
@@ -58,7 +57,15 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/twitter"
-        android:layout_below="@id/item_category"/>
+        android:layout_below="@id/item_stock"/>
+
+    <TextView
+        android:id="@+id/item_stock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:textSize="16sp"
+        android:layout_below="@id/item_category" />
 
 </RelativeLayout>
 
