@@ -4,7 +4,7 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/item_title"
+        android:id="@+id/basket_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Item Title"
@@ -16,44 +16,36 @@
         android:paddingBottom="8dp" />
 
     <TextView
-        android:id="@+id/item_manufacturer"
+        android:id="@+id/basket_item_manufacturer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Manufacturer"
         android:textSize="16sp"
-        android:layout_below="@id/item_title"/>
+        android:layout_below="@id/basket_item_title"/>
 
     <TextView
-        android:id="@+id/item_price"
+        android:id="@+id/basket_item_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Price"
         android:textSize="16sp"
-        android:layout_below="@id/item_manufacturer"/>
+        android:layout_below="@id/basket_item_manufacturer"/>
 
     <TextView
-        android:id="@+id/item_category"
+        android:id="@+id/basket_item_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Category"
         android:textSize="16sp"
         android:paddingBottom="16dp"
-        android:layout_below="@id/item_price"/>
+        android:layout_below="@id/basket_item_price"/>
 
     <ImageView
-        android:id="@+id/item_image"
+        android:id="@+id/basket_item_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         android:src="@drawable/twitter"
-        android:layout_below="@id/item_category"/>
-
-    <Button
-        android:id="@+id/addToBasketButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add to Basket"
-        android:layout_below="@id/item_image"
-        android:layout_marginTop="16dp"/>
+        android:layout_below="@id/basket_item_category"/>
 
 </RelativeLayout>

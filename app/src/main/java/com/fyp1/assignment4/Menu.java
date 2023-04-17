@@ -67,13 +67,13 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.viewStockButton:
-                startActivity(new Intent(this, ViewStock.class));
+                startActivity(new Intent(this, ViewItems.class));
                 break;
             case R.id.searchButton:
                 startActivity(new Intent(this, AddItem.class));
                 break;
             case R.id.shoppingCartButton:
-                // Add action to view customers
+                startActivity(new Intent(this, ShoppingBasket.class));
                 break;
             case R.id.accountButton:
                 // Add action to view purchase history

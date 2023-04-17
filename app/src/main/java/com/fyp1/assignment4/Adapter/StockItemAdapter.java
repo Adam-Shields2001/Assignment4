@@ -51,9 +51,9 @@ public class StockItemAdapter extends RecyclerView.Adapter<StockItemAdapter.Stoc
         StockItem stockItem = stockItemList.get(position);
         if (stockItem != null) {
             holder.titleTextView.setText(stockItem.getTitle());
-            holder.manufacturerTextView.setText(stockItem.getManufacturer());
-            holder.priceTextView.setText(String.valueOf(stockItem.getPrice()));
-            holder.categoryTextView.setText(stockItem.getCategory());
+            holder.manufacturerTextView.setText("Manufacturer: " + stockItem.getManufacturer());
+            holder.priceTextView.setText("Price: €" + String.valueOf(stockItem.getPrice()));
+            holder.categoryTextView.setText("Category: " + stockItem.getCategory());
             // Set image to ImageView using a library such as Glide or Picasso
         }
     }
